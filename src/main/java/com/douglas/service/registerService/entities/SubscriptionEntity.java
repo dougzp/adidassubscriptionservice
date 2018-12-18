@@ -6,8 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
+@JsonInclude(Include.NON_NULL)
 public class SubscriptionEntity {
 	
 	@Id
@@ -16,7 +19,7 @@ public class SubscriptionEntity {
 	private String email = null;
     private String firstName = null;
  	private Date dateOfBith = null;
-	private String gender = null;
+	private GenderEnum gender = null;
 	private Boolean consent = null;
 	
 	@Transient
@@ -29,7 +32,7 @@ public class SubscriptionEntity {
 
 
 
-	public SubscriptionEntity(String email, String firstName, Date dateOfBith, String gender, Boolean consent) {
+	public SubscriptionEntity(String email, String firstName, Date dateOfBith, GenderEnum gender, Boolean consent) {
 		super();
 		this.email = email;
 		this.firstName = firstName;
@@ -39,7 +42,7 @@ public class SubscriptionEntity {
 	}
 
 
-	public SubscriptionEntity(Long id, String email, String firstName, Date dateOfBith, String gender, Boolean consent) {
+	public SubscriptionEntity(Long id, String email, String firstName, Date dateOfBith, String GenderEnum, Boolean consent) {
 		super();
 		this.id=id;
 		this.email = email;
@@ -98,13 +101,13 @@ public class SubscriptionEntity {
 
 
 
-	public String getGender() {
+	public GenderEnum getGender() {
 		return gender;
 	}
 
 
 
-	public void setGender(String gender) {
+	public void setGender(GenderEnum gender) {
 		this.gender = gender;
 	}
 
